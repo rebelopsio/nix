@@ -73,7 +73,11 @@
           brews = [
             "mas"
           ];
-          casks = [];
+          casks = [
+            "firefox@developer-edition"
+            "iina"
+            "the-unarchiver"
+          ];
           masApps = {
             "iBar" = 6443843900;
             "Meetingbar" = 1532419400;
