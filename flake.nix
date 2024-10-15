@@ -73,6 +73,13 @@
           brews = [
             "mas"
           ];
+          casks = [];
+          masApps = {
+            "iBar" = 6443843900;
+            "Meetingbar" = 1532419400;
+            "Tailscale" = 1475387142;
+            "Slack" = 803453959;
+          }
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
           onActivation.cleanup = "zap";
