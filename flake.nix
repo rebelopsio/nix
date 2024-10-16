@@ -20,14 +20,10 @@
             pkgs.mkalias
             pkgs.alacritty
             pkgs.flameshot
-            #pkgs.podman-desktop
+            pkgs.podman
             pkgs._1password
-            #pkgs._1password-gui
-            #pkgs.caffeine
             pkgs.skhd
             pkgs.yabai
-            #pkgs.pulumi
-            pkgs.pulumi-bin
             pkgs.terramate
             pkgs.tenv
             pkgs.qmk
@@ -59,6 +55,9 @@
             pkgs.starship
             pkgs.zoxide
             pkgs.zellij
+            pkgs.nil
+            pkgs.telegram-desktop
+            pkgs.obsidian
         ];
       fonts.packages = 
         [
@@ -72,18 +71,20 @@
           ];
           brews = [
             "mas"
+            "cloudquery"
           ];
           casks = [
             "firefox@developer-edition"
             "iina"
             "the-unarchiver"
+            "caffeine"
           ];
           masApps = {
             "iBar" = 6443843900;
             "Meetingbar" = 1532419400;
             "Tailscale" = 1475387142;
             "Slack" = 803453959;
-          }
+          };
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
           onActivation.cleanup = "zap";
