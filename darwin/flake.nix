@@ -24,7 +24,7 @@
     # $ darwin-rebuild build --flake .#charmander
     darwinConfigurations."charmander" = nix-darwin.lib.darwinSystem {
       modules = [ 
-        commonConfig ../machines/charmander/charmander.nix
+        commonConfig ./../machines/charmander/charmander.nix
         nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
@@ -57,7 +57,7 @@
     # $ darwin-rebuild build --flake .#squirtle
     darwinConfigurations."squirtle" = nix-darwin.lib.darwinSystem {
       modules = [ 
-        commonConfig ../machines/squirtle/squirtle.nix
+        commonConfig ./../machines/squirtle/squirtle.nix
         nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
@@ -86,6 +86,6 @@
       ];
     };
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations.hostname.pkgs;
+      # darwinPackages = self.darwinConfigurations."charmander".pkgs;
   };
 }
