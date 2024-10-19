@@ -149,8 +149,8 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#personalmbp
-    darwinConfigurations."personalmbp" = nix-darwin.lib.darwinSystem {
+    # $ darwin-rebuild build --flake .#charmander
+    darwinConfigurations."charmander" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration
         nix-homebrew.darwinModules.nix-homebrew
@@ -182,6 +182,6 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."personalmbp".pkgs;
+    darwinPackages = self.darwinConfigurations."charmander".pkgs;
   };
 }
