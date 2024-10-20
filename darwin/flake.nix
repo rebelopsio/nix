@@ -20,9 +20,13 @@
       hostname = builtins.getEnv "HOSTNAME";
   in
   {
+      nixpkgs.overlays = [
+      (import ./../overlays/telegram-overlay.nix)
+    ];
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#charmander
-    darwinConfigurations."charmander" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations = {
+      charmander = nix-darwin.lib.darwinSystem {
       modules = [ 
         commonConfig ./../machines/charmander/charmander.nix
         nix-homebrew.darwinModules.nix-homebrew
@@ -55,7 +59,7 @@
 
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#squirtle
-    darwinConfigurations."squirtle" = nix-darwin.lib.darwinSystem {
+    squirtle = nix-darwin.lib.darwinSystem {
       modules = [ 
         commonConfig ./../machines/squirtle/squirtle.nix
         nix-homebrew.darwinModules.nix-homebrew
@@ -86,6 +90,7 @@
       ];
     };
     # Expose the package set, including overlays, for convenience.
-      # darwinPackages = self.darwinConfigurations."charmander".pkgs;
+     darwinPackages = self.darwinConfigurations."charmander".pkgs;
   };
+    };
 }
