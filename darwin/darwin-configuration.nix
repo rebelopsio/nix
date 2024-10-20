@@ -13,7 +13,7 @@
             podman
             _1password
             skhd
-            yabai
+      # yabai
             terramate
             tenv
             qmk
@@ -131,5 +131,10 @@
       users.users.smorgan = {
         name = "smorgan";
         home = "/Users/smorgan";
+
     };
+        # Optionally, start yabai as a service via launchd
+        services.yabai = {
+          enable = true;
+        };
     }
