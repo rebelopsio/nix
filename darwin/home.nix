@@ -17,7 +17,8 @@ in {
   home.stateVersion = "23.11";
 
   imports = [
-    ./../home/yabai.nix    
+    ./../home/yabai.nix
+    ./../home/sketchybar.nix
   ];
 
   programs = {
