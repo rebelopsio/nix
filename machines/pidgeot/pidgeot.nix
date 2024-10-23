@@ -4,9 +4,9 @@
   # Specific packages and settings for charmander
   environment.systemPackages = with pkgs; [
   ];
-  users.users.stephenmorgan = {
-   name = "stephenmorgan";
-   home = "/Users/stephenmorgan";
+  users.users.pidgey = {
+   name = "pidgey";
+   home = "/home/pidgey";
 
   };
 
