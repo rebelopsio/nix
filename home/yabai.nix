@@ -67,7 +67,7 @@ let
 in
 {
   # Write the yabai configuration to ~/.yabairc
-  home.file."/Users/smorgan/.config/yabai/yabairc" = {
+  home.file.".config/yabai/yabairc" = {
     text = yabaiConfig;
   };
 
