@@ -57,10 +57,12 @@
           enable = true;
           taps = [
             "cloudquery/tap"
+            "dagger/tap"
           ];
           brews = [
             "mas"
             "cloudquery"
+            "dagger"
           ];
           casks = [
             "firefox@developer-edition"
