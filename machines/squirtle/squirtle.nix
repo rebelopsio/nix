@@ -1,13 +1,10 @@
-{ config, lib, pkgs, self, ... }:
-
-{
-  # Specific packages and settings for charmander
-  environment.systemPackages = with pkgs; [
-  ];
+{ config, lib, pkgs, currentHostname, ... }: {
   users.users.stephenmorgan = {
-   name = "stephenmorgan";
-   home = "/Users/stephenmorgan";
-
+    name = "stephenmorgan";
+    home = "/Users/stephenmorgan";
   };
 
+  environment.systemPackages = with pkgs; [
+    # System-wide packages specific to squirtle
+  ];
 }

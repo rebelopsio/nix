@@ -16,81 +16,77 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
   let
-      commonConfig = ./darwin-configuration.nix;
-      hostname = builtins.getEnv "HOSTNAME";
+    commonConfig = ./darwin-configuration.nix;
   in
   {
-      nixpkgs.overlays = [
+    nixpkgs.overlays = [
       (import ./../overlays/telegram-overlay.nix)
     ];
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#charmander
+
     darwinConfigurations = {
+      squirtle = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit self;
+          currentHostname = "squirtle";
+        };
+        modules = [ 
+          commonConfig
+          ./../machines/squirtle/squirtle.nix
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "stephenmorgan";
+              autoMigrate = true;
+            };
+          }
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                currentHostname = "squirtle";
+              };
+              users.stephenmorgan = import ./home.nix;
+            };
+          }
+        ];
+      };
+
       charmander = nix-darwin.lib.darwinSystem {
-      modules = [ 
-        commonConfig ./../machines/charmander/charmander.nix
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            # Install Homebrew under the default prefix
-            enable = true;
-
-            # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-            enableRosetta = true;
-
-            # User owning the Homebrew prefix
-            user = "smorgan";
-
-            # Automatically migrate existing Homebrew installations
-            autoMigrate = true;
-          };
-        }
-        home-manager.darwinModules.home-manager
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit self;
+          currentHostname = "charmander";
+        };
+        modules = [ 
+          commonConfig
+          ./../machines/charmander/charmander.nix
+          nix-homebrew.darwinModules.nix-homebrew
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.smorgan = import ./home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "smorgan";
+              autoMigrate = true;
+            };
           }
-      ];
-    };
-
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#squirtle
-    squirtle = nix-darwin.lib.darwinSystem {
-      modules = [ 
-        commonConfig ./../machines/squirtle/squirtle.nix
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            # Install Homebrew under the default prefix
-            enable = true;
-
-            # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-            enableRosetta = true;
-
-            # User owning the Homebrew prefix
-            user = "stephenmorgan";
-
-            # Automatically migrate existing Homebrew installations
-            autoMigrate = true;
-          };
-        }
-        home-manager.darwinModules.home-manager
+          home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.stephenmorgan = import ./home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                currentHostname = "charmander";
+              };
+              users.smorgan = import ./home.nix;
+            };
           }
-      ];
+        ];
+      };
     };
-    # Expose the package set, including overlays, for convenience.
-     darwinPackages = self.darwinConfigurations."charmander".pkgs;
   };
-    };
 }
