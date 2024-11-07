@@ -47,6 +47,9 @@
             zellij
             nil
             obsidian
+            nushell
+            stow
+            carapace
         ];
       fonts.packages = 
         [
@@ -63,6 +66,7 @@
             "mas"
             "cloudquery"
             "dagger"
+            "pulumi"
           ];
           casks = [
             "firefox@developer-edition"
