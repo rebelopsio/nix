@@ -10,10 +10,8 @@
             mkalias
             alacritty
             flameshot
-            podman
             _1password
             skhd
-      # yabai
             terramate
             tenv
             qmk
@@ -50,6 +48,11 @@
             nushell
             stow
             carapace
+            pre-commit
+            pipx
+            awscli2
+            tree
+            go-task
         ];
       fonts.packages = 
         [
@@ -61,12 +64,15 @@
           taps = [
             "cloudquery/tap"
             "dagger/tap"
+            "turbot/tap"
           ];
           brews = [
             "mas"
             "cloudquery"
             "dagger"
             "pulumi"
+            "go"
+            "docker"
           ];
           casks = [
             "firefox@developer-edition"
@@ -75,7 +81,7 @@
             "caffeine"
           ];
           masApps = {
-            "iBar" = 6443843900;
+            "iBar" = 6737150304;
             "Meetingbar" = 1532419400;
             "Tailscale" = 1475387142;
             "Slack" = 803453959;
