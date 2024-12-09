@@ -53,6 +53,7 @@
             awscli2
             tree
             go-task
+            packer
         ];
       fonts.packages = 
         [
