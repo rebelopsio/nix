@@ -74,6 +74,8 @@
             "pulumi"
             "go"
             "docker"
+            "pkg-config"
+            "openssl@3"
           ];
           casks = [
             "firefox@developer-edition"
